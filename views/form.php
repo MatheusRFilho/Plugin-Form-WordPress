@@ -225,12 +225,10 @@
   }
 
   .tab {
-      display:none
+    display:none
   }
 </style>
-
-<h1 class="title-header">Agende uma missão Canção Nova</h1>
-
+<h1 class="entry-title">aaaaa</h1>
 <div class="ball-container">
   <div class="ball">
     <p>1</p>
