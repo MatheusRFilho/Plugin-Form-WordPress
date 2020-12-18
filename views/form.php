@@ -492,6 +492,10 @@
       <label class="label" for="activity">Tipo de atividade</label>
       <input type="text" name="activity" id="activity" class="input" required>
     </div>
+    <div class="check-container">
+      <input type="checkbox" name="terms" id="terms" required>
+      <label class="label" for="terms"><a>Li e aceito o termo</a></label>
+    </div>
   </div>
 
   <div class="button-container">
@@ -604,8 +608,14 @@
     currentTab = currentTab + n;
     
     if (currentTab >= x.length) {      
-      document.getElementById("new_post").submit();
-      return false;
+      if(document.getElementById("terms").checked){
+        document.getElementById("new_post").submit();
+        return false;
+      } else {
+        document.getElementById("terms").focus();
+        alert("Aceite os termos para continuar");
+        currentTab = 2;
+      }
     }
     showTab(currentTab);
   } 
