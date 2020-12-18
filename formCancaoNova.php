@@ -105,32 +105,8 @@ function form_pedidos_e_missoes() {
       var_dump($pid);
     }
   }
-
-  function register_styles() {
-    wp_register_style( 'main.css',  (dirname(__FILE__)).'/styles/main.css' ) ;
-    wp_enqueue_style( 'main.css' );
-  }
-  // Register style sheet.
-  add_action( 'wp_enqueue_scripts', 'register_styles' );
   include_once(dirname(__FILE__).'/views/form.php');
-
-  
-
-//   function myscripts() {
-//     //get some external script that is needed for this script
-//     wp_enqueue_script('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js'); 
-//     $script = get_template_directory_uri() . '/scripts/script.js';
-//     wp_register_script('myfirstscript', 
-//                         $script, 
-//                         array ('jquery', 'jquery-ui'), 
-//                         false, false);
-//     //always enqueue the script after registering or nothing will happen
-//     wp_enqueue_script('fullpage-slimscroll');
-     
-// }
-// add_action("wp_enqueue_script", "myscripts");
 }
-
 add_shortcode('formulario', 'form_pedidos_e_missoes');
 
 function mission_request_custom_post_type() {

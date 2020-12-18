@@ -1,4 +1,4 @@
-
+ 
 
   
     $("#phone-res").mask("(00) 0000-0000");
@@ -91,9 +91,7 @@
     } 
    }
 
-   function nextPrev(n) {
-
-    
+  function nextPrev(n) {
     var x = document.getElementsByClassName("tab");
     var ball = document.getElementsByClassName("ball");
 

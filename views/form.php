@@ -1,4 +1,234 @@
 <div>
+<style>
+  * {
+    margin:0;
+    padding: 0;
+  }
+
+  body {
+    width: 100%;
+  }
+
+  .input {
+    padding: 10px 10px;
+    border: 2px solid #EBEEF0;
+    border-radius: 4px !important;
+    width: 100%;
+    height:40px;
+    perspective: 1px;
+    color: #718A96;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .input:focus {
+    border: 2px solid #0079BF;
+    outline: none;
+  }
+
+  .input-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom:10px;
+    margin-top: 10px;
+  }
+  
+  .form-50-50 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+  }
+
+  .form-40 {
+    display: grid;
+    grid-template-columns: 0.475fr;
+    column-gap: 50px;
+  }
+
+  .form-80-20 {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    column-gap: 50px;
+  }
+
+  .form-30-50-20 {
+    display: grid;
+    grid-template-columns: 0.3fr 0.6fr 0.1fr;
+    column-gap: 50px;
+  }
+
+  .form-20-20 {
+    display: grid;
+    grid-template-columns: 0.17fr 0.2fr;
+    column-gap: 10px;
+  }
+
+  .form-30-30-30 {
+    display: grid;
+    grid-template-columns: 0.33fr 0.34fr 0.33fr;
+    column-gap: 50px;
+  }
+
+  .label {
+    color: #718A96;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+  }
+ 
+  .option-container .option-label {
+    color: #88a6b4;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .line {
+    border-bottom: 1.2px solid #ccc;
+    margin-top: 16px;
+  }
+
+  .event-line {
+    border-bottom: 1.2px solid #ccc;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .sub-title {
+    font-size: 16px;
+    color: #718A96;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .title {
+    font-size: 18px;
+    color: #0079BF;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .title-header {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0079BF;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 38px 0;
+  }
+
+  .radio-container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .option-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 15%;
+    margin-top: 8px;
+    margin-left: 10px;
+  }
+
+  .option {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+  }
+
+  #prevBtn {
+    background-color: white;
+    border: none;
+    color: #0079BF;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 30px;
+  }
+
+  #prevBtn:focus {
+    outline:none;
+  }
+  #nextBtn {
+    padding: 15px 20px;
+    border: none;
+    background-color: #0079BF;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0.5px 2px 0.5px rgba(0, 121, 191, 0.2);
+    cursor: pointer;
+  }
+
+  #nextBtn:focus {
+    outline:none;
+  }
+
+  .button-container {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+
+  .ball-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px
+  }
+  
+  .ball-active  {
+    background-color:  #0079BF;
+    border: none;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ball {
+    border: 1px solid  #0079BF;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ball-active p {
+    color: white !important;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1.5px;
+  }
+  
+  .ball p{
+    color:#0079BF;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  .progress-line {
+    width: 40%;
+    height: 1px;
+    background-color:#0079BF;
+    
+  }
+
+  .tab {
+      display:none
+  }
+</style>
+
 <h1 class="title-header">Agende uma missão Canção Nova</h1>
 
 <div class="ball-container">
@@ -118,7 +348,7 @@
     <div class="form-30-50-20">
       <div class="input-container">
         <label class="label" for="event-type">Tipo do evento</label>
-        <input type="text" name="event-type" id="event-type" class="input" required> 
+        <input type="text" name="event-type" id="event-type" class="input" required>
       </div>
       <div class="input-container">
         <label class="label" for="est-public">Estimativa de público</label>
@@ -234,5 +464,112 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
+  <script type="text/javascript">
+    $("#phone-res").mask("(00) 0000-0000");
+    $("#phone-cel").mask("(00) 000000009");
+    $("#cep").mask("00000-000");
+    $("#uf").mask("SS");
+    $("#uf-event").mask("SS");
+    $("#date-participation").mask("00/00/0000");
+    $("#ending-date").mask("00/00/0000");
+    $("#initial-date").mask("00/00/0000");
+    $("#hour-initial").mask("00:00");
+    $("#hour-final").mask("00:00");
+    $("#ingresso-valor").mask("R$099999");
 
+
+    $("#cep").focusout(function(){
+      $.ajax({
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			dataType: 'json',
+
+			success: function(resposta){
+				$("#logradouro").val(resposta.logradouro);
+				$("#complemento").val(resposta.complemento);
+				$("#bairro").val(resposta.bairro);
+				$("#cidade").val(resposta.localidade);
+				$("#uf").val(resposta.uf);
+				$("#num").focus();
+			}
+		});
+    });
+
+    $("#cep-event").focusout(function(){
+      $.ajax({
+			url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+			dataType: 'json',
+
+			success: function(resposta){
+				$("#logradouro-event").val(resposta.logradouro);
+				$("#complemento-event").val(resposta.complemento);
+				$("#bairro-event").val(resposta.bairro);
+				$("#cidade-event").val(resposta.localidade);
+				$("#uf-event").val(resposta.uf);
+				$("#num-event").focus();
+			}
+		});
+    });
+ </script>
+ 
+ <script>
+
+  function showEventAdress() {
+    document.getElementById("form-adress").style.display = "block";
+  }
+
+  function hideEventAdress() {
+    document.getElementById("form-adress").style.display = "none";
+  }
+
+  function showTicketPrice() {
+    document.getElementById("ticket-price").style.display = "block";
+    document.getElementByClass("radio-container").style.marginTop = "0px";
+  }
+
+  function hideTicketPrice() {
+    document.getElementById("ticket-price").style.display = "none";
+    document.getElementByClass("radio-container").style.marginTop = "10px";
+  }
+
+  var currentTab = 0; 
+  showTab(currentTab);
+
+  function showTab(n) {
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    
+    if(n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+    } else {
+      document.getElementById("prevBtn").style.display ="inline";
+    }
+
+    var ball = document.getElementsByClassName("ball");
+    
+    for (var i = 0; i < ball.length; i++){
+      if(currentTab == i) {
+        ball[currentTab].classList.add('ball-active');
+      } else {
+        ball[i].classList.remove('ball-active')
+      }     
+    } 
+   }
+
+   function nextPrev(n) {
+    var x = document.getElementsByClassName("tab");
+    var ball = document.getElementsByClassName("ball");
+
+    if(n == -1) {
+      ball[currentTab].classList.remove('ball-active');
+    }
+    x[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    
+    if (currentTab >= x.length) {      
+      document.getElementById("new_post").submit();
+      return false;
+    }
+    showTab(currentTab);
+  } 
+ </script>
 </div>
