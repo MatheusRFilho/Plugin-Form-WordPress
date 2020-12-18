@@ -186,8 +186,10 @@
     background-color:  #0079BF;
     border: none;
     border-radius: 100%;
-    width: 50px;
-    height: 50px;
+    
+
+    min-width:50px;
+    min-height:50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,8 +198,9 @@
   .ball {
     border: 1px solid  #0079BF;
     border-radius: 100%;
-    width: 50px;
-    height: 50px;
+   
+    min-width:50px;
+    min-height:50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,8 +230,45 @@
   .tab {
     display:none
   }
+
+  @media (max-width: 768px) {
+    .form-50-50 {
+      display: grid;
+      grid-template-columns: 1fr ;
+      column-gap: 50px;
+    }
+
+    .form-40 {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 50px;
+    }
+
+    .form-80-20 {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 50px;
+    }
+
+    .form-30-50-20 {
+      display: grid;
+      grid-template-columns: 1fr ;
+      column-gap: 50px;
+    }
+
+    .form-20-20 {
+      display: grid;
+      grid-template-columns: 1fr ;
+      column-gap: 10px;
+    }
+
+    .form-30-30-30 {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 50px;
+    }
+  }
 </style>
-<h1 class="entry-title">aaaaa</h1>
 <div class="ball-container">
   <div class="ball">
     <p>1</p>
