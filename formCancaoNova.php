@@ -93,21 +93,44 @@ function form_pedidos_e_missoes() {
     );
 
     $postData = ['post_title' => $event_name, 'post_type' => 'mission_request'];
-
+    
     $pid = wp_insert_post($postData);
+    
+    function email_sender($email){
+      if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $to = $email;
+        $subject = 'Solicitação de Missão';
+        $body = 'Sua solicitação foi recebida com sucesso!';
+        //wp_mail($to, $subject, $body);
+        if(wp_mail( $to, $subject, $body )){
+          echo '<script>alert("Solicitação realizada com sucesso")</script>'; 
+        } else {
+          echo '<script>alert("Houve algum problema na solicitação")</script>'; 
+        }
+      } 
+      
+    }
+
+    email_sender($email);
     
     if ($pid) {
       foreach ($new_post as $field=>$value) {
         update_post_meta($pid, $field, $value);
       }
     }
-    else {
-      var_dump($pid);
-    }
   }
   include_once(dirname(__FILE__).'/views/form.php');
 }
 add_shortcode('formulario', 'form_pedidos_e_missoes');
+// ----------------------- Teste para checagem de email ----------------------
+// add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
+// function log_mailer_errors( $wp_error ){
+//   $fn = dirname(__FILE__) . '/mail.log'; // say you've got a mail.log file in your server root
+//   $fp = fopen($fn, 'a');
+//   var_dump($fp, "Mailer Error: " . $wp_error->get_error_message() ."\n");
+//   fclose($fp);
+
+// }
 
 function mission_request_custom_post_type() {
   register_post_type('mission_request',

@@ -610,6 +610,7 @@
     if (currentTab >= x.length) {      
       if(document.getElementById("terms").checked){
         document.getElementById("new_post").submit();
+        
         return false;
       } else {
         document.getElementById("terms").focus();
