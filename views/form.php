@@ -363,7 +363,6 @@
     <div class="ball">
       <p>3</p>
     </div>
-
   </div>
   <form action="" id="new_post" method="post" name="new_post">
     <input type="hidden" name="mission_request_new_form" value="1" />
@@ -659,7 +658,6 @@
     $("#hour-initial").mask("00:00");
     $("#hour-final").mask("00:00");
     $("#ingresso-valor").mask("R$099999");
-
 
     $("#cep").focusout(function () {
       $.ajax({

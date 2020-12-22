@@ -107,8 +107,7 @@ function form_pedidos_e_missoes() {
         } else {
           echo '<script>alert("Houve algum problema na solicitação")</script>'; 
         }
-      } 
-      
+      }  
     }
 
     email_sender($email);
@@ -122,6 +121,7 @@ function form_pedidos_e_missoes() {
   include_once(dirname(__FILE__).'/views/form.php');
 }
 add_shortcode('formulario', 'form_pedidos_e_missoes');
+
 // ----------------------- Teste para checagem de email ----------------------
 // add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
 // function log_mailer_errors( $wp_error ){
