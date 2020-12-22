@@ -54,7 +54,13 @@ function form_pedidos_e_missoes() {
     $date_participation = $_POST['date-participation'];
     $hour_initial = $_POST['hour-initial'];
     $hour_final = $_POST['hour-final'];
-    $activity = $_POST['activity'];
+    
+
+    if($_POST['activity'] == "0" ) {
+      $activity = $_POST['activity_text'];
+    } else {
+      $activity = $_POST['activity'];
+    }
    
     $new_post = array(
         'nome' => $nome,

@@ -20,6 +20,7 @@
       height: 40px;
       perspective: 1px;
       color: #718A96;
+      font-family: 'Lato', sans-serif;
       font-size: 14px;
       font-weight: 700;
     }
@@ -38,6 +39,7 @@
       perspective: 1px;
       color: #718A96;
       background-color: #fff;
+      font-family: 'Lato', sans-serif;
       font-size: 14px;
       font-weight: 700;
     }
@@ -629,7 +631,13 @@
       </div>
       <div class="input-container">
         <label class="label" for="activity">Tipo de atividade</label>
-        <input type="text" name="activity" id="activity" class="input" required>
+        <select name="activity" class="select">
+          <option value="" disabled selected></option>
+          <option value="Missa">Missa</option>
+          <option value="0">Outro</option>
+        </select>
+        <label class="label" for="activity_text" name="activity_text_label" id="activity_text_label" style="display: none;">Descreva a atividade</label>
+        <input type="text" name="activity_text" id="activity_text" class="input" style="display: none;">
       </div>
       <div class="check-container">
         <input type="checkbox" name="terms" id="terms" required>
@@ -690,6 +698,19 @@
         }
       });
     });
+
+
+    $('select[name = activity]').on('change', function() {
+      if(this.value == 0) {
+        document.getElementById("activity_text").style.display = "block";
+        document.getElementById("activity_text_label").style.display = "block";
+        document.getElementById("activity_text_label").style.marginTop = "16px";
+      } else {
+        document.getElementById("activity_text").style.display = "none";
+        document.getElementById("activity_text_label").style.display = "none";
+        document.getElementById("activity_text_label").style.marginTop = "0px";
+      }
+    });
   </script>
 
   <script>
@@ -709,6 +730,11 @@
     function hideTicketPrice() {
       document.getElementById("ticket-price").style.display = "none";
       document.getElementByClass("radio-container").style.marginTop = "10px";
+    }
+
+    function handleActivity() {
+      console.log($( "#activity option:selected" ).text());
+      
     }
 
     var currentTab = 0;
