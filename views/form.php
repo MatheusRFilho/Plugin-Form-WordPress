@@ -290,6 +290,55 @@
       grid-template-columns: 1fr;
       column-gap: 50px;
     }
+
+    .form-30-40-30 {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 50px;
+    }
+    
+    .button-container {
+      display: flex;
+      height: 30px;
+      justify-content: flex-end;
+      align-content: center;
+
+      margin-top: 12px;
+    }
+
+    #prevBtn {
+      background-color: white;
+      border: none;
+      color: #0079BF;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 5px;
+      height: 40px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    #prevBtn:focus {
+      outline:none;
+    }
+    #nextBtn {
+      padding: 10px 10px;
+      border: none;
+      background-color: #0079BF;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+      box-shadow: 0.5px 2px 0.5px rgba(0, 121, 191, 0.2);
+      cursor: pointer;
+      height: 40px;
+      font-size: 14px;
+    }
+
+    #nextBtn:focus {
+      outline:none;
+    }
   }
 </style>
 <div class="ball-container">
@@ -665,7 +714,7 @@
     if(n == 0) {
       document.getElementById("prevBtn").style.display = "none";
     } else {
-      document.getElementById("prevBtn").style.display ="inline";
+      document.getElementById("prevBtn").style.display ="flex";
     }
 
     var ball = document.getElementsByClassName("ball");
