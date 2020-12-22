@@ -26,6 +26,23 @@
     outline: none;
   }
 
+  .select {
+    padding: 10px 10px;
+    border: 1px solid #EBEEF0;
+    border-radius: 4px !important;
+    width: 100%;
+    height: 40px;
+    perspective: 1px;
+    color: #718A96;
+    background-color: #fff;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .select:focus {
+    border: 2px solid #0079BF;
+    outline: none;
+  }
   .input-container {
     display: flex;
     flex: 1;
@@ -54,7 +71,13 @@
 
   .form-30-50-20 {
     display: grid;
-    grid-template-columns: 0.3fr 0.6fr 0.1fr;
+    grid-template-columns: 0.3fr 0.6fr 0.2fr;
+    column-gap: 50px;
+  }
+  
+  .form-30-40-30 {
+    display: grid;
+    grid-template-columns: 0.33fr 0.6fr 0.15fr;
     column-gap: 50px;
   }
 
@@ -335,7 +358,7 @@
       <input type="text" name="num" id="num" class="input" required>
     </div>  
   </div>
-  <div class="form-30-50-20">
+  <div class="form-30-40-30">
     <div class="input-container">
       <label class="label" for="bairro">Bairro</label>
       <input type="text" name="bairro" id="bairro" class="input" required>
@@ -346,7 +369,36 @@
     </div> 
     <div class="input-container">
       <label class="label" for="uf">UF</label>
-      <input type="text" name="uf" id="uf" class="input" required>
+      <select name="uf" class="select">
+            <option value="" disabled selected></option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select> 
     </div>  
   </div>
   <div class="event-line">
@@ -448,7 +500,7 @@
           <input type="text" name="num-event" id="num-event" class="input" required>
         </div>  
       </div>
-      <div class="form-30-50-20">
+      <div class="form-30-40-30">
         <div class="input-container">
           <label class="label" for="bairro-event">Bairro</label>
           <input type="text" name="bairro-event" id="bairro-event" class="input" required>
@@ -459,7 +511,36 @@
         </div> 
         <div class="input-container">
           <label class="label" for="uf-event">UF</label>
-          <input type="text" name="uf-event" id="uf-event" class="input" required>
+           <select name="uf-event" class="select">
+            <option value="" disabled selected ></option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select> 
         </div>  
       </div>
     </div>
@@ -510,6 +591,7 @@
     $("#phone-res").mask("(00) 0000-0000");
     $("#phone-cel").mask("(00) 000000009");
     $("#cep").mask("00000-000");
+    $("#cep-event").mask("00000-000");
     $("#uf").mask("SS");
     $("#uf-event").mask("SS");
     $("#date-participation").mask("00/00/0000");
@@ -530,7 +612,7 @@
 				$("#complemento").val(resposta.complemento);
 				$("#bairro").val(resposta.bairro);
 				$("#cidade").val(resposta.localidade);
-				$("#uf").val(resposta.uf);
+        $("select[name = uf] option[value = " + resposta.uf + " ]").attr("selected", true);
 				$("#num").focus();
 			}
 		});
@@ -545,8 +627,8 @@
 				$("#logradouro-event").val(resposta.logradouro);
 				$("#complemento-event").val(resposta.complemento);
 				$("#bairro-event").val(resposta.bairro);
-				$("#cidade-event").val(resposta.localidade);
-				$("#uf-event").val(resposta.uf);
+        $("#cidade-event").val(resposta.localidade);
+        $("select[name = uf-event] option[value = " + resposta.uf + " ]").attr("selected", true);
 				$("#num-event").focus();
 			}
 		});
