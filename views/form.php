@@ -633,7 +633,10 @@
         <label class="label" for="activity">Tipo de atividade</label>
         <select name="activity" class="select">
           <option value="" disabled selected></option>
-          <option value="Missa">Missa</option>
+          <option value="Missas">Missas</option>
+          <option value="Show">Show</option>
+          <option value="Evento">Evento</option>
+          <option value="Aprofundamento">Aprofundamento</option>
           <option value="0">Outro</option>
         </select>
         <label class="label" for="activity_text" name="activity_text_label" id="activity_text_label" style="display: none;">Descreva a atividade</label>
