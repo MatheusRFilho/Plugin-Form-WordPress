@@ -644,7 +644,7 @@
       </div>
       <div class="check-container">
         <input type="checkbox" name="terms" id="terms" required>
-        <label class="label" for="terms"><a>Li e aceito o termo</a></label>
+        <label class="label" for="terms"><a href="<?php echo get_option('terms_mission')?>" target="_blank">Li e aceito o termo</a></label>
       </div>
     </div>
 
