@@ -97,6 +97,7 @@ function form_pedidos_e_missoes() {
         'hour_initial'          => $hour_initial,
         'hour_final'            => $hour_final,
         'activity'              => $activity,
+        'status'                => 'Aguardando',
     );
 
     $postData = ['post_title' => $event_name, 'post_type' => 'mission_request'];
@@ -108,7 +109,7 @@ function form_pedidos_e_missoes() {
         $to = $email;
         $subject = get_option('subject_mail_mission');
         $body = get_option('body_mail_mission');
-        
+
         if(wp_mail( $to, $subject, $body )){
           echo '<script>alert("Solicitação realizada com sucesso")</script>'; 
         } else {
@@ -126,6 +127,18 @@ function form_pedidos_e_missoes() {
     }
   }
   include_once(dirname(__FILE__).'/views/form.php');
+ 
+  function my_load_scripts() {
+ 
+    $my_js_ver  = (filemtime( plugin_dir_path( __FILE__ ) . 'scripts/form-script.js' ));
+    $my_css_ver = (filemtime( plugin_dir_path( __FILE__ ) . 'styles/main.css' ));
+    
+    wp_enqueue_script( 'custom_js', plugins_url( 'scripts/form-script.js', __FILE__ ), array(), $my_js_ver );
+    wp_register_style( 'my_css',    plugins_url( 'styles/main.css',    __FILE__ ), false,   $my_css_ver );
+    wp_enqueue_style ( 'my_css' );
+}
+my_load_scripts();
+
 }
 add_shortcode('formulario', 'form_pedidos_e_missoes');
 
